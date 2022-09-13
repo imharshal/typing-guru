@@ -103,7 +103,7 @@ const KEYS = [
 let handleHighlight = () => {};
 const KeyboardLayout = ({ keyPressed, hintKey }) => {
   return (
-    <div className="keyboard">
+    <div id="keyboard">
       <div className="row">
         {KEYS[0].map((info, k) =>
           info.type == "special" ? (

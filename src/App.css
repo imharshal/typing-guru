@@ -4,15 +4,45 @@
 
 :root {
   --size: 15px;
+  --big-box-width: 500px;
+  --big-box-height: 300px;
+  --big-box-margin: 20px;
+  --big-box-font-size: 20px;
 }
 
 body {
   background-color: whitesmoke;
   color: black;
+  display: flex;
+  justify-content: center;
 }
 
-.keyboard {
-  background-color: white;
+.lesson-playground {
+  border: 3px solid #A883BA;
+  border-radius: 10px;
+  padding: 100px;
+  margin: 10px auto;
+}
+
+.paragraph-playground {
+  border: 3px solid #A883BA;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 10px auto;
+}
+
+#hand-box {
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+#keyboard {
+  margin: 0 auto;
+  background-color: transparent;
+  width: max-content;
 }
 
 .row {
@@ -110,16 +140,16 @@ body {
   background-color: #D3FBD8;
 }
 
-.current-box {
-  background-color: #A883BA;
-}
-
 .space-box {
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 2px solid grey;
   font-size: 11px;
-  padding: 2px 5px;
+  padding: 1px 5px;
   margin: 3px
+}
+
+.current-box {
+  background-color: #A883BA;
 }
 
 .d-none {
@@ -134,4 +164,57 @@ body {
 .wrong-border {
   background-color: white;
   border: 2px solid red
+}
+
+#lesson {
+  margin: 50px 5px;
+}
+
+#question-box,
+#response-box {
+  width: var(--big-box-width);
+  height: var(--big-box-height);
+  margin: var(--big-box-margin);
+  font-size: var(--big-box-font-size);
+  font-family: consolas;
+  --wekit-user-select: none;
+  --moz-user-select: none;
+  user-select: none;
+  border: 1px solid black;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding: 5px;
+
+}
+
+#question-box {
+  display: inline-block;
+  background-color: #D3FBD8;
+  word-wrap: normal;
+  letter-spacing: .5px;
+}
+
+#response-box {
+  outline: none;
+  resize: none;
+}
+
+.word {
+  margin-right: 9px;
+  display: inline-block;
+}
+
+
+.wrong-word {
+  color: #f33;
+  text-decoration: line-through;
+  font-weight: bold;
+
+}
+
+.current-word {
+  color: #A883BA;
+  font-weight: bold;
+  text-decoration: underline;
 }
