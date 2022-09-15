@@ -46,6 +46,7 @@ body {
 }
 
 #navbar ul li>a {
+  display: block;
   text-decoration: none;
   color: #A883BA;
   font-size: 20px;
@@ -59,22 +60,11 @@ body {
   color: white;
 }
 
-.lesson-playground {
-  display: flex;
-  flex-direction: column;
-  justify-items: space-between;
+.playground {
+  position: relative;
   border: 3px solid #A883BA;
   border-radius: 10px;
-  padding: 100px;
-  margin: 10px auto;
-  width: 50vw;
-  height: 50vh;
-}
-
-.paragraph-playground {
-  border: 3px solid grey;
-  border-radius: 10px;
-  /* padding: 30px; */
+  padding: 30px;
   margin: 10px auto;
   width: 70vw;
   height: 80vh
@@ -94,9 +84,20 @@ body {
   width: max-content;
 }
 
+.absolute-center {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px
+}
+
 .row {
   display: flex;
   justify-content: space-between;
+}
+
+.space-between {
+  height: var(--big-box-height);
+  margin: var(--big-box-margin);
 }
 
 .key {
@@ -216,14 +217,14 @@ body {
 }
 
 #lesson {
-  margin: 50px 5px;
+  margin: 50px auto;
 }
 
 #question-box,
 #response-box {
   width: var(--big-box-width);
   height: var(--big-box-height);
-  margin: var(--big-box-margin);
+  /* margin: var(--big-box-margin); */
   font-size: var(--big-box-font-size);
   font-family: consolas;
   --wekit-user-select: none;

@@ -66,21 +66,26 @@ const SentencePractice = ({ lesson, keyPressed }) => {
   };
 
   return (
-    <div className="lesson-playground">
-      {!begin ? (
-        <Modal message="Press space key to begin drill"></Modal>
-      ) : (
-        <Lesson
-          lesson={lesson}
-          incorrect={incorrect}
-          textLimit={textLimit}
-          current={current}
-        ></Lesson>
-      )}
-      <KeyboardLayout
-        keyPressed={keyPressed}
-        hintKey={hintKey}
-      ></KeyboardLayout>
+    <div className=" playground">
+      <div className="space-between">
+        {!begin ? (
+          <Modal message="Press space key to begin drill"></Modal>
+        ) : (
+          <Lesson
+            lesson={lesson}
+            incorrect={incorrect}
+            textLimit={textLimit}
+            current={current}
+          ></Lesson>
+        )}
+      </div>
+      <div className="row">
+        <div id="hand-box"></div>
+        <KeyboardLayout
+          keyPressed={keyPressed}
+          hintKey={hintKey}
+        ></KeyboardLayout>
+      </div>
     </div>
   );
 };

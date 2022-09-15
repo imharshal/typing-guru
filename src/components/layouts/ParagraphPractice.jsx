@@ -74,19 +74,21 @@ const ParagraphPractice = ({ para, keyPressed }) => {
   };
 
   return (
-    <div className="paragraph-playground">
-      {!begin ? (
-        <Modal message="Press space key to begin drill"></Modal>
-      ) : (
-        <div className="row">
-          <QuestionBox
-            para={para}
-            current={current}
-            incorrect={incorrect}
-          ></QuestionBox>
-          <ResponseBox focus={focus} onChange={handleChange}></ResponseBox>
-        </div>
-      )}
+    <div className="playground">
+      <div className="space-between">
+        {!begin ? (
+          <Modal message="Press space key to begin drill"></Modal>
+        ) : (
+          <div className="row">
+            <QuestionBox
+              para={para}
+              current={current}
+              incorrect={incorrect}
+            ></QuestionBox>
+            <ResponseBox focus={focus} onChange={handleChange}></ResponseBox>
+          </div>
+        )}
+      </div>
       <div className="row">
         <div id="hand-box"></div>
         <KeyboardLayout

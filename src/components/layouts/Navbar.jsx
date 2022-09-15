@@ -1,19 +1,27 @@
-import { Link } from "react-router-dom";
-const Navbar = () => {
+import { Link, NavLink } from "react-router-dom";
+const Navbar = ({ active }) => {
   return (
     <nav id="navbar">
       <ul>
         <li>
-          <Link to="paragraph">Paragraph</Link>
+          <NavLink exact="true" className="nav-link" to="/paragraph">
+            Paragraph
+          </NavLink>
         </li>
         <li>
-          <Link to="sentence">Sentence</Link>
+          <NavLink exact="true" className="nav-link" to="/sentence">
+            Sentence
+          </NavLink>
         </li>
         <li>
-          <Link to="test">Typing Test</Link>
+          <NavLink exact="true" className="nav-link" to="/test">
+            Typing test
+          </NavLink>
         </li>
         <li>
-          <Link to="game">Game</Link>
+          <NavLink exact="true" className="nav-link" to="/game">
+            Game
+          </NavLink>
         </li>
       </ul>
     </nav>

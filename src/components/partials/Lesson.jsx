@@ -13,7 +13,8 @@ const Lesson = ({ lesson, incorrect, textLimit, current }) => {
             show={k >= textLimit.start && k <= textLimit.end + 1}
             char={c}
           ></Character>
-        ))}{" "}
+        ))}
+      <p>Type highlighted element</p>
     </div>
   );
 };
