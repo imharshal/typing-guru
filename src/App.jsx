@@ -18,8 +18,9 @@ function App() {
             path="/sentence"
             element={<Playground layout="sentence"></Playground>}
           ></Route>
-          <Route path="*"></Route>
+          <Route path="*" element={<div className="playground"></div>}></Route>
         </Routes>
+
         <Navbar active={params}></Navbar>
       </div>
     </BrowserRouter>

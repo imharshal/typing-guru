@@ -10,7 +10,7 @@ const SentencePractice = ({ lesson, keyPressed }) => {
   const [current, setCurrent] = useState(0); // to know which is currect character tha is to be enterred
   const [incorrect, setIncorrect] = useState(new Set()); // to store index of incorrect character in lesson
   const [difficultKeys, setDifficultKeys] = useState(new Set()); // to store missed keys assuming that is difficult
-  const [textLimit, setTextLimit] = useState({ start: 0, end: 15 }); // setting limit on how much characters to display at time
+  const [textLimit, setTextLimit] = useState({ start: 0, end: 20 }); // setting limit on how much characters to display at time
   const [hintKey, setHintKey] = useState({}); // to give hint on keyboard
   const [begin, setBegin] = useState(false);
 
@@ -45,8 +45,8 @@ const SentencePractice = ({ lesson, keyPressed }) => {
     //Setting character limit to be displayed as a lesson
     if (current > textLimit.end) {
       const newTextLimit = {
-        start: textLimit.start + 15,
-        end: textLimit.end + 15,
+        start: textLimit.start + 20,
+        end: textLimit.end + 20,
       };
       setTextLimit(newTextLimit);
     }
