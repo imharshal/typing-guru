@@ -44,7 +44,7 @@ const KEYS = [
     },
   ],
   [
-    { base: "tab ↹", shift: "tab ↹", finger: "ll", type: "special" },
+    { base: "Tab ↹", shift: "Tab ↹", finger: "ll", type: "special" },
     { base: "q", shift: "Q", finger: "ll" },
     { base: "w", shift: "W", finger: "lr" },
     { base: "e", shift: "E", finger: "lm" },
