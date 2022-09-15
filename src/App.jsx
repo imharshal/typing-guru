@@ -1,54 +1,26 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-
-import { SentencePractice } from "./components/layouts/SentencePractice.jsx.jsx";
-import TypingTest from "./components/layouts/ParagraphPractice";
-
-import ParagraphPractice from "./components/layouts/ParagraphPractice";
-
+import Navbar from "./components/layouts/Navbar";
+import Playground from "./components/layouts/Playground";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Routes } from "react-router-dom";
 function App() {
-  const [keyPressed, setEvent] = useState();
-  const [lesson, setLesson] = useState([]);
-  const [para, setPara] = useState([]);
-
-  useEffect(() => {
-    const text =
-      "This is a Rju Ox Poe Tor text This is a Rju Ox Poe Tor text This is a Rju Ox Poe Tor text This is a Rju Ox Poe Tor text";
-    setLesson(text.split(""));
-    setPara(text.split(" "));
-  }, []);
-
-  useEffect(() => {
-    const onPress = (e) => {
-      setEvent(e);
-    };
-
-    window.addEventListener("keydown", onPress);
-
-    if (keyPressed && keyPressed.key != "") {
-      setTimeout(function () {
-        setEvent({ key: "" });
-      }, 300);
-    }
-    // handleHintKey();
-    return () => {
-      window.removeEventListener("keydown", onPress);
-    };
-  }, [keyPressed]);
-
   return (
-    <div id="App">
-      <ParagraphPractice
-        para={para}
-        keyPressed={keyPressed}
-        // paraInChar={lesson}
-      ></ParagraphPractice>
-
-      {/* <SentencePractice
-        lesson={lesson}
-        keyPressed={keyPressed}
-      ></SentencePractice> */}
-    </div>
+    <BrowserRouter>
+      <div id="App">
+        <Routes>
+          <Route
+            path="/paragraph"
+            element={<Playground layout="paragraph"></Playground>}
+          ></Route>
+          <Route
+            path="/sentence"
+            element={<Playground layout="sentence"></Playground>}
+          ></Route>
+          <Route path="*"></Route>
+        </Routes>
+        <Navbar></Navbar>
+      </div>
+    </BrowserRouter>
   );
 }
 

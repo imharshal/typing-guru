@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Lesson } from "../partials/Lesson";
+import Modal from "../partials/Modal";
 import KeyboardLayout from "./Keyboard";
 
 const SentencePractice = ({ lesson, keyPressed }) => {
@@ -11,24 +12,32 @@ const SentencePractice = ({ lesson, keyPressed }) => {
   const [difficultKeys, setDifficultKeys] = useState(new Set()); // to store missed keys assuming that is difficult
   const [textLimit, setTextLimit] = useState({ start: 0, end: 15 }); // setting limit on how much characters to display at time
   const [hintKey, setHintKey] = useState({}); // to give hint on keyboard
+  const [begin, setBegin] = useState(false);
+
   useEffect(() => {
     //calling hint key method
     handleHintKey();
 
     if (keyPressed && keyPressed.key.length === 1) {
       let key = keyPressed.key;
-      //setting characters clicked
-      setHits(hits + 1);
 
-      if (lesson) {
-        if (lesson[current] === key) {
-          //If keypressed is correct character then highlighting next character
-          setCurrent(current + 1);
-        } else {
-          //If keypressed is incorrect
-          setMissed(missed + 1);
-          setIncorrect((prevState) => prevState.add(current));
-          setDifficultKeys((prevState) => prevState.add(lesson[current]));
+      if (!begin && key === " ") {
+        setBegin(true);
+      }
+      if (begin) {
+        //setting characters clicked
+        setHits(hits + 1);
+
+        if (lesson) {
+          if (lesson[current] === key) {
+            //If keypressed is correct character then highlighting next character
+            setCurrent(current + 1);
+          } else {
+            //If keypressed is incorrect
+            setMissed(missed + 1);
+            setIncorrect((prevState) => prevState.add(current));
+            setDifficultKeys((prevState) => prevState.add(lesson[current]));
+          }
         }
       }
     }
@@ -45,23 +54,29 @@ const SentencePractice = ({ lesson, keyPressed }) => {
 
   //method to set hintkey
   const handleHintKey = () => {
-    if (lesson) {
+    if (lesson && begin) {
       let char = lesson[current];
       if (char >= "A" && char <= "Z")
         setHintKey({ hint: lesson[current], shift: true });
       else setHintKey({ hint: lesson[current], shift: false });
       // console.log(hintKey);
+    } else if (lesson) {
+      setHintKey({ hint: " ", shift: false });
     }
   };
 
   return (
-    <div className="playground">
-      <Lesson
-        lesson={lesson}
-        incorrect={incorrect}
-        textLimit={textLimit}
-        current={current}
-      ></Lesson>
+    <div className="lesson-playground">
+      {!begin ? (
+        <Modal message="Press space key to begin drill"></Modal>
+      ) : (
+        <Lesson
+          lesson={lesson}
+          incorrect={incorrect}
+          textLimit={textLimit}
+          current={current}
+        ></Lesson>
+      )}
       <KeyboardLayout
         keyPressed={keyPressed}
         hintKey={hintKey}
@@ -70,4 +85,4 @@ const SentencePractice = ({ lesson, keyPressed }) => {
   );
 };
 
-export { SentencePractice };
+export default SentencePractice;
