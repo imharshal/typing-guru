@@ -9,8 +9,6 @@ const highlightLeftFinger = (k) => {
       (key) => key.base === k.hint.toLowerCase()
     );
     if (keyIndex != -1) {
-      console.log(k);
-      console.log(k.hint, ShiftLeft.has(k.hint));
       const { finger, base } = ALLKEYS[keyIndex];
       if (ShiftLeft.has(k.hint)) name += "ll";
       else if (k.hint.toLowerCase() === base && finger.indexOf("l") === 0)
