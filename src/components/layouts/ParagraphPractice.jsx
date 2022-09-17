@@ -9,15 +9,10 @@ const ParagraphPractice = ({ para, keyPressed }) => {
   const [current, setCurrent] = useState(0);
   const [hintKey, setHintKey] = useState({});
   const lastWord = useRef("");
-  const [lastChar, setlastChar] = useState("");
-  const responseBox = useRef(null);
+  // const [lastChar, setlastChar] = useState("");
   const [begin, setBegin] = useState(false);
   const [focus, setFocus] = useState(false);
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setlastChar(value.charAt(value.length - 1));
-  };
   useEffect(() => {
     handleHintKey();
     if (!begin && keyPressed && keyPressed.key === " ") {
@@ -26,9 +21,10 @@ const ParagraphPractice = ({ para, keyPressed }) => {
     }
   }, [keyPressed]);
 
-  useEffect(() => {
-    handleHintKey();
-    // console.log(hintKey);
+  const handleChange = (e) => {
+    const value = e.target.value;
+    // setlastChar(value.charAt(value.length - 1));
+    let lastChar = value.charAt(value.length - 1);
     if (lastChar && keyPressed != undefined) {
       const { key } = keyPressed;
       if (begin) {
@@ -41,6 +37,7 @@ const ParagraphPractice = ({ para, keyPressed }) => {
             //if space key detected go to next word
             setCurrent((cur) => cur + 1);
             // if word typed is incorrect store it's index
+            console.log(lastWordValue);
             if (para[current] !== lastWordValue) {
               setIncorrect((prevState) => prevState.add(current));
             }
@@ -48,15 +45,16 @@ const ParagraphPractice = ({ para, keyPressed }) => {
             setResponse((prevResp) => [...prevResp, lastWordValue]);
             lastWord.current = ""; // resetting last enterred word
           } else {
-            if (hintKey.key == lastChar)
-              setIncorrect((prevState) => prevState.add(current));
-            lastWord.current = lastWordValue + key;
+            // if (hintKey.key == lastChar)
+            //   setIncorrect((prevState) => prevState.add(current));
+            temp.current = temp.current + lastChar;
+            console.log(key);
+            lastWord.current = lastWord.current + key;
           }
-          // console.log(lastWord.current);
         }
       }
     }
-  }, [lastChar]);
+  };
 
   const handleHintKey = () => {
     if (begin && para && para[current]) {
@@ -64,7 +62,6 @@ const ParagraphPractice = ({ para, keyPressed }) => {
       let char = word.split("");
       char.push(" ");
       let hintKeyChar = char[lastWord.current.length];
-      console.log(word, hintKeyChar, current);
       if (hintKeyChar >= "A" && hintKeyChar <= "Z")
         setHintKey({ hint: hintKeyChar, shift: true });
       else setHintKey({ hint: hintKeyChar, shift: false });

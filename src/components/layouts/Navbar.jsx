@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-const Navbar = ({ active }) => {
+const Navbar = () => {
   return (
     <nav id="navbar">
       <ul>
