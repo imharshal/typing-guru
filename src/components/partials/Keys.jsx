@@ -79,10 +79,10 @@ const Key = ({ info, keyPressed, hint }) => {
 };
 
 const KeyBroad = ({ info, keyPressed, hint }) => {
-  const { base, shift, finger } = info;
+  const { base, shift, finger, type } = info;
   return (
     <span
-      className={`key key-broad ${finger} ${addActiveClass(base, keyPressed)}`}
+      className={`key key-broad ${base.length < 2 ? 'backslash-key' : 'key-special'} ${finger} ${addActiveClass(base, keyPressed)}`}
     >
       {base}
     </span>
@@ -90,10 +90,10 @@ const KeyBroad = ({ info, keyPressed, hint }) => {
 };
 
 const KeyBroader = ({ info, keyPressed, hint }) => {
-  const { base, shift, finger } = info;
+  const { base, shift, finger, special } = info;
   return (
     <span
-      className={`key key-broader ${finger} 
+      className={`key key-broader key-special ${finger} 
       ${addActiveSpecialClass(base, keyPressed)}`}
     >
       {base}
@@ -104,12 +104,12 @@ const KeyBroader = ({ info, keyPressed, hint }) => {
 const KeyBroadest = ({ info, keyPressed, hint }) => {
   const ref = useRef(null);
 
-  const { base, shift, finger } = info;
+  const { base, shift, finger, special } = info;
   return (
     <span
       id={info.code}
       ref={ref}
-      className={`key key-broadest ${finger} 
+      className={`key key-broadest ${finger} key-special 
       ${addActiveSpecialClass(base, keyPressed, finger)}
       ${addShiftKeyHintClass(info, hint, keyPressed)}`}
     >
@@ -122,7 +122,7 @@ const KeySpaceBar = ({ info, keyPressed, hint }) => {
   const { base, shift, finger } = info;
   return (
     <span
-      className={`key key-spacebar 
+      className={`key key-spacebar
     ${addActiveClass(base, keyPressed)} ${addHintKeyClass(info, hint)}`}
     >
       Spacebar

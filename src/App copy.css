@@ -1,7 +1,13 @@
+* {
+  /* box-sizing: border-box; */
+}
+
 :root {
-  /* --size: 2em; */
-  --keyboard-font-size: 18px;
-  --input-box-font-size: 18px;
+  --size: 15px;
+  --big-box-width: 500px;
+  --big-box-height: 300px;
+  --big-box-margin: 20px;
+  --big-box-font-size: 20px;
 }
 
 body {
@@ -55,9 +61,6 @@ body {
 }
 
 .playground {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   background-color: #FEFEDF;
   position: relative;
   border: 3px solid #A883BA;
@@ -69,43 +72,12 @@ body {
   height: 80vh
 }
 
-.hand-box {
-  position: relative;
-  display: inline-block;
+#hand-box {
   width: 200px;
-  height: 154px;
-  overflow: hidden;
+  height: 200px;
+  margin: 20px;
   border: 1px solid black;
-}
-
-.hand-image {
-  position: relative;
-
-}
-
-.finger-lf,
-.finger-rf {
-  top: -154px;
-}
-
-.finger-lm,
-.finger-rm {
-  top: calc(-154px * 2);
-}
-
-.finger-lr,
-.finger-rr {
-  top: calc(-154px * 3);
-}
-
-.finger-ll,
-.finger-rl {
-  top: calc(-154px * 4);
-}
-
-.finger-lt,
-.finger-rt {
-  top: calc(-154px * 5);
+  display: inline-block;
 }
 
 .notes li {
@@ -115,14 +87,9 @@ body {
 }
 
 #keyboard {
-  position: relative;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
   margin: 0 auto;
   background-color: transparent;
-  /* width: 400px; */
-  font-size: var(--keyboard-font-size);
+  width: max-content;
 }
 
 .absolute-center {
@@ -136,69 +103,47 @@ body {
   justify-content: space-between;
 }
 
-/* .space-between {
+.space-between {
   height: var(--big-box-height);
   margin: var(--big-box-margin);
-} */
-
-.key-row {
-  display: flex;
 }
 
 .key {
-  box-sizing: border-box;
   color: black;
   display: inline-block;
   border: 1px solid grey;
   box-shadow: 0 0 1px 0 grey;
-  height: 2em;
-  padding: .3em;
-  margin: .1em;
-  border-radius: .3em;
-  white-space: nowrap;
-  /* display: flex; */
+  height: var(--size);
+  padding: 10px;
+  margin: 3px;
+  border-radius: .3rem;
 }
 
 .key.key-square {
-  width: max-content;
+  width: var(--size);
+  font-size: 18px;
   text-align: center;
-  flex: 1;
-}
-
-.backslash-key,
-.key-special {
-  display: flex;
-  align-items: center;
-  height: 92%;
-  flex: 3;
-}
-
-.key-special {
-  font-size: .7em;
 }
 
 .key-broad {
-  /* width: calc(var(--size)); */
+  width: calc(var(--size) * 4);
+  /* min-width: ; */
   background-color: #D5CABD;
 }
 
-/* .key.key-broader {
-  width: calc(var(--size))
+.key.key-broader {
+  width: calc(var(--size) * 6)
 }
 
 .key.key-broadest {
-  width: calc(var(--size));
-} */
+  width: calc(var(--size) * 8);
+}
 
 .key.key-spacebar {
-  padding: .4em 2em;
-  width: 30em;
+  width: calc(var(--size) * 20);
   text-align: center;
   background-color: #D3FBD8;
-  font-size: .8em;
-  height: 92%;
-  flex: 10
-    /* min-width: calc(var(--size) * 7) */
+  /* min-width: calc(var(--size) * 7) */
 }
 
 .ll,
@@ -286,12 +231,10 @@ body {
 
 #question-box,
 #response-box {
-  font-size: var(--input-box-font-size);
-  flex: 1;
-  min-width: 200px;
-  margin: .4em;
-  height: 16em;
-  max-height: 280px;
+  width: var(--big-box-width);
+  height: var(--big-box-height);
+  /* margin: var(--big-box-margin); */
+  font-size: var(--big-box-font-size);
   font-family: consolas;
   --wekit-user-select: none;
   --moz-user-select: none;

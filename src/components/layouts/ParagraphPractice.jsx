@@ -3,6 +3,8 @@ import { QuestionBox } from "../partials/QuestionBox";
 import { ResponseBox } from "../partials/ResponseBox";
 import KeyboardLayout from "./Keyboard";
 import Modal from "../partials/Modal";
+import KEYS from "../../services/KeysInfo";
+import { LeftHand, RightHand } from "../partials/Hand";
 const ParagraphPractice = ({ para, keyPressed }) => {
   const [incorrect, setIncorrect] = useState(new Set());
   const [response, setResponse] = useState([]);
@@ -37,7 +39,7 @@ const ParagraphPractice = ({ para, keyPressed }) => {
             //if space key detected go to next word
             setCurrent((cur) => cur + 1);
             // if word typed is incorrect store it's index
-            console.log(lastWordValue);
+            // console.log(lastWordValue);
             if (para[current] !== lastWordValue) {
               setIncorrect((prevState) => prevState.add(current));
             }
@@ -47,8 +49,8 @@ const ParagraphPractice = ({ para, keyPressed }) => {
           } else {
             // if (hintKey.key == lastChar)
             //   setIncorrect((prevState) => prevState.add(current));
-            temp.current = temp.current + lastChar;
-            console.log(key);
+            // temp.current = temp.current + lastChar;
+            // console.log(key);
             lastWord.current = lastWord.current + key;
           }
         }
@@ -87,11 +89,12 @@ const ParagraphPractice = ({ para, keyPressed }) => {
         )}
       </div>
       <div className="row">
-        <div id="hand-box"></div>
+        <LeftHand hintKey={hintKey}></LeftHand>
         <KeyboardLayout
           keyPressed={keyPressed}
           hintKey={hintKey}
         ></KeyboardLayout>
+        <RightHand hintKey={hintKey}></RightHand>
       </div>
     </div>
   );

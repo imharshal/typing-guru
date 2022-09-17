@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { LeftHand, RightHand } from "../partials/Hand";
 import { Lesson } from "../partials/Lesson";
 import Modal from "../partials/Modal";
 import KeyboardLayout from "./Keyboard";
@@ -80,11 +81,13 @@ const SentencePractice = ({ lesson, keyPressed }) => {
         )}
       </div>
       <div className="row">
-        <div id="hand-box"></div>
+        <LeftHand hintKey={hintKey}></LeftHand>
+
         <KeyboardLayout
           keyPressed={keyPressed}
           hintKey={hintKey}
         ></KeyboardLayout>
+        <RightHand hintKey={hintKey}></RightHand>
       </div>
     </div>
   );
