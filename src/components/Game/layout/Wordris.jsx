@@ -121,7 +121,7 @@ const Wordris = ({ keyPressed }) => {
               </button>
             </div>
           )
-        ) : (
+        ) : begin ? (
           <div className="tetris-box">
             {words &&
               words.map((w, k) => (
@@ -136,6 +136,8 @@ const Wordris = ({ keyPressed }) => {
                 ></Word>
               ))}
           </div>
+        ) : (
+          ""
         )}
       </div>
       {(begin || gameOver || win) && (
@@ -146,6 +148,42 @@ const Wordris = ({ keyPressed }) => {
             level:{level} stackSize: {stackSize} position: {position} diff:
             {levels[level]}
           </div> */}
+        </div>
+      )}
+
+      {!begin && gameOver && (
+        <div className="center">
+          <h3 className="center text-success" style={{ textAlign: "center" }}>
+            {" "}
+            *** Tips to excel the game ***{" "}
+          </h3>
+          <ul className="notes">
+            <li>
+              Type a word in the stripe before it touches the bottom of box
+            </li>
+            <li>
+              Practice the lesson and word drill to improve your typing speed
+            </li>
+            <li>Improve your accuracy</li>
+          </ul>
+        </div>
+      )}
+      {!begin && !gameOver && (
+        <div className="center">
+          <h3 className="center text-success" style={{ textAlign: "center" }}>
+            {" "}
+            *** Game Instructions ***{" "}
+          </h3>
+          <ul className="notes">
+            <li>
+              Type a word in the stripe before it touches the bottom of box
+            </li>
+            <li>
+              If the word is missed and touches the bottom of box it will be
+              stacked inside the box
+            </li>
+            <li>Game will over if the box gets filled with stack of words</li>
+          </ul>
         </div>
       )}
     </div>
