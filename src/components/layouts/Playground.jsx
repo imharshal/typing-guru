@@ -3,17 +3,14 @@ import ParagraphPractice from "./ParagraphPractice";
 import SentencePractice from "./SentencePractice";
 import { paragraph } from "txtgen";
 import { createLesson } from "../../services/LessonsGenerator";
+import Wordris from "../Game/layout/Wordris";
 const Playground = ({ layout }) => {
   const [keyPressed, setKeyPressed] = useState({ key: "" });
   const [lesson, setLesson] = useState([]);
   const [para, setPara] = useState([]);
 
   useEffect(() => {
-    // console.log(paragraph());
-    const text =
-      "This is a Rjjjjjj u Ox Poe Tor text This is a Rju Ox Poe Tor text This is a Rju Ox Poe Tor text This is a Rju Ox Poe Tor text";
-
-    setLesson(createLesson(['as df', 'jk l;', "asdf jkl;"], 5).split(''));
+    setLesson(createLesson(["as df", "jk l;", "asdf jkl;"], 5).split(""));
     setPara(paragraph().split(" "));
   }, []);
 
@@ -33,17 +30,23 @@ const Playground = ({ layout }) => {
       window.removeEventListener("keydown", onPress);
     };
   }, [keyPressed]);
-
-  return layout === "paragraph" ? (
-    <ParagraphPractice para={para} keyPressed={keyPressed}></ParagraphPractice>
-  ) : layout === "sentence" ? (
-    <SentencePractice
-      lesson={lesson}
-      keyPressed={keyPressed}
-    ></SentencePractice>
-  ) : (
-    ""
-  );
+  if (layout === "paragraph")
+    return (
+      <ParagraphPractice
+        para={para}
+        keyPressed={keyPressed}
+      ></ParagraphPractice>
+    );
+  if (layout === "sentence")
+    return (
+      <SentencePractice
+        lesson={lesson}
+        keyPressed={keyPressed}
+      ></SentencePractice>
+    );
+  else if (layout === "tetris")
+    return <Wordris keyPressed={keyPressed}></Wordris>;
+  else return "";
 };
 
 export default Playground;

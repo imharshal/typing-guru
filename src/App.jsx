@@ -21,7 +21,11 @@ function App() {
             path="/sentence"
             element={<Playground layout="sentence"></Playground>}
           ></Route>
-          <Route path="*" element={<div className="playground"></div>}></Route>
+          <Route
+            path="/game"
+            element={<Playground layout="tetris"></Playground>}
+          ></Route>
+          <Route path="*" element={<div class="playground"></div>}></Route>
         </Routes>
 
         <Navbar />
