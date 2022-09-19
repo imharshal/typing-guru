@@ -3,6 +3,8 @@ import Navbar from "./components/layouts/Navbar";
 import Playground from "./components/layouts/Playground";
 import { BrowserRouter, Route, useParams } from "react-router-dom";
 import { Routes } from "react-router-dom";
+import CourseMenu from "./components/layouts/CourseMenu";
+import LessonMenu from "./components/layouts/LessonMenu";
 // import { sentence } from "txtgen";
 // import { getCourse } from './services/Course'
 function App() {
@@ -13,6 +15,19 @@ function App() {
     <BrowserRouter>
       <div id="App">
         <Routes>
+          <Route
+            path="/course/lesson/:id/:task"
+            element={<div>task</div>}
+          ></Route>
+
+          <Route
+            path="/course/lesson/:id"
+            element={<LessonMenu></LessonMenu>}
+          ></Route>
+          <Route
+            path="/course"
+            element={<CourseMenu layout="course"></CourseMenu>}
+          ></Route>
           <Route
             path="/paragraph"
             element={<Playground layout="paragraph"></Playground>}

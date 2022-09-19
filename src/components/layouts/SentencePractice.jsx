@@ -67,7 +67,7 @@ const SentencePractice = ({ lesson, keyPressed }) => {
   };
 
   return (
-    <div className=" playground">
+    <div className=" playground space-between">
       <div className="space-between">
         {!begin ? (
           <Modal message="Press space key to begin drill"></Modal>
@@ -82,7 +82,6 @@ const SentencePractice = ({ lesson, keyPressed }) => {
       </div>
       <div className="row">
         <LeftHand hintKey={hintKey}></LeftHand>
-
         <KeyboardLayout
           keyPressed={keyPressed}
           hintKey={hintKey}

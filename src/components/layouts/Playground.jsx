@@ -4,13 +4,15 @@ import SentencePractice from "./SentencePractice";
 import { paragraph } from "txtgen";
 import { createLesson } from "../../services/LessonsGenerator";
 import Wordris from "../Game/layout/Wordris";
-const Playground = ({ layout }) => {
+import { useParams } from "react-router-dom";
+const Playground = ({ layout, pattern }) => {
   const [keyPressed, setKeyPressed] = useState({ key: "" });
   const [lesson, setLesson] = useState([]);
   const [para, setPara] = useState([]);
-
+  // const { task } = useParams();
   useEffect(() => {
-    setLesson(createLesson(["as df", "jk l;", "asdf jkl;"], 5).split(""));
+    if (pattern) setLesson(createLesson(pattern, 5).split(""));
+    else setLesson(createLesson(["as df", "jk l;", "asdf jkl;"], 5).split(""));
     setPara(paragraph().split(" "));
   }, []);
 

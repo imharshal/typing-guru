@@ -73,7 +73,7 @@ const ParagraphPractice = ({ para, keyPressed }) => {
   };
 
   return (
-    <div className="playground">
+    <div className="playground space-between">
       <div className="space-between">
         {!begin ? (
           <Modal message="Press space key to begin drill"></Modal>
