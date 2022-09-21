@@ -5,12 +5,20 @@ import KeyboardLayout from "./Keyboard";
 import Modal from "../partials/Modal";
 import KEYS from "../../services/KeysInfo";
 import { LeftHand, RightHand } from "../partials/Hand";
+import TaskComplete from "../partials/TaskComplete";
+
 const ParagraphPractice = ({ para, keyPressed }) => {
+  const [hits, setHits] = useState(0); // storing the count of keyhits
+  const [correct, setCorrect] = useState(0); // storing the count of keyhits
   const [incorrect, setIncorrect] = useState(new Set());
   const [response, setResponse] = useState([]);
   const [current, setCurrent] = useState(0);
   const [hintKey, setHintKey] = useState({});
+  const [taskCompleted, setTaskCompleted] = useState(false);
+
   const lastWord = useRef("");
+  const [difficultKeys, setDifficultKeys] = useState(new Set()); // to store missed keys assuming that is difficult
+
   // const [lastChar, setlastChar] = useState("");
   const [begin, setBegin] = useState(false);
   const [focus, setFocus] = useState(false);
@@ -20,6 +28,11 @@ const ParagraphPractice = ({ para, keyPressed }) => {
     if (!begin && keyPressed && keyPressed.key === " ") {
       setBegin(true);
       setFocus(true);
+    }
+    if (begin && response.length >= para.length && current === para.length) {
+      setBegin(false);
+      setTaskCompleted(true);
+      setFocus(false);
     }
   }, [keyPressed]);
 
@@ -35,6 +48,13 @@ const ParagraphPractice = ({ para, keyPressed }) => {
           lastWord.current = lastWordValue.slice(0, -1);
         }
         if (key.length == 1) {
+          setHits((ps) => ps + 1);
+          if (key !== " " && hintKey !== key)
+            setDifficultKeys((prevState) => prevState.add(hintKey.hint));
+          if (hintKey.hint === key) {
+            setCorrect((ps) => ps + 1);
+          }
+
           if (lastChar === " ") {
             //if space key detected go to next word
             setCurrent((cur) => cur + 1);
@@ -51,6 +71,7 @@ const ParagraphPractice = ({ para, keyPressed }) => {
             //   setIncorrect((prevState) => prevState.add(current));
             // temp.current = temp.current + lastChar;
             // console.log(key);
+
             lastWord.current = lastWord.current + key;
           }
         }
@@ -74,10 +95,11 @@ const ParagraphPractice = ({ para, keyPressed }) => {
 
   return (
     <div className="playground space-between">
-      <div className="space-between">
-        {!begin ? (
-          <Modal message="Press space key to begin drill"></Modal>
-        ) : (
+      {/* <div className="space-between"> */}
+      {!begin && !taskCompleted ? (
+        <Modal message="Press space key to begin drill"></Modal>
+      ) : (
+        !taskCompleted && (
           <div className="row">
             <QuestionBox
               para={para}
@@ -86,16 +108,31 @@ const ParagraphPractice = ({ para, keyPressed }) => {
             ></QuestionBox>
             <ResponseBox focus={focus} onChange={handleChange}></ResponseBox>
           </div>
-        )}
-      </div>
-      <div className="row">
-        <LeftHand hintKey={hintKey}></LeftHand>
-        <KeyboardLayout
-          keyPressed={keyPressed}
-          hintKey={hintKey}
-        ></KeyboardLayout>
-        <RightHand hintKey={hintKey}></RightHand>
-      </div>
+        )
+      )}
+      {/* </div> */}
+      {!taskCompleted ? (
+        <div className="row">
+          <LeftHand hintKey={hintKey}></LeftHand>
+          <KeyboardLayout
+            keyPressed={keyPressed}
+            hintKey={hintKey}
+          ></KeyboardLayout>
+          <RightHand hintKey={hintKey}></RightHand>
+        </div>
+      ) : (
+        <TaskComplete
+          analytics={{
+            incorrect: incorrect,
+            hits: hits,
+            total: correct,
+            difficultKeys: difficultKeys,
+          }}
+          message="Well done! You have completed the paragraph drill"
+          // links={direction}
+          // title={{ prev: "Go Back", next: "Next" }}
+        ></TaskComplete>
+      )}
     </div>
   );
 };

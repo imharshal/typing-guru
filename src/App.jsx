@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route
             path="/course/lesson/:id/:task"
-            element={<div>task</div>}
+            element={<Playground layout="sentence"></Playground>}
           ></Route>
 
           <Route
@@ -33,7 +33,7 @@ function App() {
             element={<Playground layout="paragraph"></Playground>}
           ></Route>
           <Route
-            path="/sentence"
+            path="/word"
             element={<Playground layout="sentence"></Playground>}
           ></Route>
           <Route

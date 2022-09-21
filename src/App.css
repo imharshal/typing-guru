@@ -46,7 +46,7 @@ body {
   display: block;
   text-decoration: none;
   color: #A883BA;
-  font-size: 20px;
+  font-size: 1.1em;
   padding: 10px;
   border-radius: 2px;
 }
@@ -112,6 +112,25 @@ body {
   font-size: .8em;
   display: inline-block;
   margin: 0 1em;
+}
+
+.lesson-video {
+  border: 5px solid #B9AA87;
+  border-radius: 5px;
+}
+
+.lesson-item {
+  margin: 4em;
+  width: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid #A883BA;
+}
+
+.lesson-item:hover {
+  background-color: #A883BA;
+  box-shadow: 0 0 5px 0 #A883BA;
+  color: white
 }
 
 .hand-box {
@@ -187,6 +206,10 @@ body {
   align-items: center;
 }
 
+.x-flex-center {
+  display: flex;
+  justify-content: space-evenly;
+}
 
 .key-row {
   display: flex;
@@ -386,6 +409,38 @@ body {
   font-size: 40px;
   text-align: center;
   z-index: 50;
+}
+
+
+.key-shape {
+  width: 30px;
+  text-align: center;
+  margin: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.difficult-keys {
+  border: 1px solid wheat;
+  padding: 5px;
+  border-radius: 15px;
+  min-width: 400px;
+  margin: 30px;
+  background-color: white;
+}
+
+.result-subheading {
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0 10px;
+  margin-top: 0
+}
+
+.color-primary {
+  color: #A883BA;
+}
+
+.m-0 {
+  margin: 10px
 }
 
 /* GAME DESIGN */

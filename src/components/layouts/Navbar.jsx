@@ -9,15 +9,16 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink exact="true" className="nav-link" to="/paragraph">
-            Paragraph
+          <NavLink exact="true" className="nav-link" to="/word">
+            Word Drill
           </NavLink>
         </li>
         <li>
-          <NavLink exact="true" className="nav-link" to="/sentence">
-            Sentence
+          <NavLink exact="true" className="nav-link" to="/paragraph">
+            Paragraph Drill
           </NavLink>
         </li>
+
         <li>
           <NavLink exact="true" className="nav-link" to="/test">
             Typing test

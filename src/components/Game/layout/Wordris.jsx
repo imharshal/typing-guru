@@ -94,7 +94,7 @@ const Wordris = ({ keyPressed }) => {
     return 1000;
   };
   return (
-    <div className="playground tetris-game-panel">
+    <div className="playground tetris-game-panel space-between">
       <div className="flex-center">
         {!begin && !gameOver && !win && (
           <Modal message="Press space key to start"></Modal>

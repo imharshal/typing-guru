@@ -8,8 +8,8 @@ const LessonMenu = () => {
   const [course, setCourse] = useState(0);
   const [layout, setLayout] = useState(null);
   useEffect(() => {
-    setCourse(getCourse());
-    console.log(course);
+    setCourse(getCourse()[id]);
+    // console.log(course);
   }, [course]);
   //   useEffect(() => {
   //     if (course && id > course.length) return " not found";
@@ -28,24 +28,29 @@ const LessonMenu = () => {
       )}
       {/* If lesson exist display menu */}
       <Link to="/course">Go Back</Link>
-      <h2 className="menu-heading">
-        {id < course.length && `Lesson ${id} : ${course[id].title}`}
-      </h2>
-      <Link to={`/course/lesson/${id}/learn`} className="menu-item">
-        <h1 className="menu-item-title">Learn</h1>
-      </Link>
-      {/* {course.map((c, k) => (
-        <NavLink key={k} to={`/course/lesson/${k}`} className="menu-item">
-          <h1 className="menu-item-title">
-            Lesson {k} :{" " + c.title}
-          </h1>
-          {c.duration && (
-            <span className="menu-item-duration">
-              Est. duration {c.duration}
-            </span>
-          )}
-        </NavLink>
-      ))} */}
+      <h2 className="menu-heading">{id && `Lesson ${id} : ${course.title}`}</h2>
+      {course.video && (
+        <div className="flex-center">
+          <video
+            className="lesson-video"
+            src={course.video}
+            controls
+            width="600"
+          ></video>
+        </div>
+      )}
+      <div className="row">
+        {course.learn && (
+          <Link to={`/course/lesson/${id}/learn`} className="lesson-item">
+            <h1 className="menu-item-title">Learn Keys Practically</h1>
+          </Link>
+        )}
+        {course.practice && (
+          <Link to={`/course/lesson/${id}/practice`} className="lesson-item">
+            <h1 className="menu-item-title">Practice words</h1>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };
