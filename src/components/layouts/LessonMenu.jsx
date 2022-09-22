@@ -28,7 +28,9 @@ const LessonMenu = () => {
       )}
       {/* If lesson exist display menu */}
       <Link to="/course">Go Back</Link>
-      <h2 className="menu-heading">{id && `Lesson ${id} : ${course.title}`}</h2>
+      <h2 className="menu-heading ">
+        {id && `Lesson ${id} : ${course.title}`}
+      </h2>
       {course.video && (
         <div className="flex-center">
           <video

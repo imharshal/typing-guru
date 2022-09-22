@@ -119,7 +119,7 @@ const SentencePractice = ({
               "Well done! You have completed the word drill"
             }
             links={direction}
-            title={{ prev: "Go Back", next: "Next" }}
+            title={{ prev: "Go Back", repeat: "Try again", next: "Next" }}
           ></TaskComplete>
         ) : !begin && !taskCompleted ? (
           <Modal message="Press space key to begin drill"></Modal>

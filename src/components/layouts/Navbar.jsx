@@ -4,6 +4,11 @@ const Navbar = () => {
     <nav id="navbar">
       <ul>
         <li>
+          <NavLink exact="true" className="nav-link" to="/home">
+            Home
+          </NavLink>
+        </li>
+        <li>
           <NavLink exact="true" className="nav-link" to="/course">
             Course
           </NavLink>

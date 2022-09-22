@@ -3,8 +3,10 @@ import Navbar from "./components/layouts/Navbar";
 import Playground from "./components/layouts/Playground";
 import { BrowserRouter, Route, useParams } from "react-router-dom";
 import { Routes } from "react-router-dom";
+import Home from "./components/layouts/Home";
 import CourseMenu from "./components/layouts/CourseMenu";
 import LessonMenu from "./components/layouts/LessonMenu";
+import Modal from "./components/partials/Modal";
 // import { sentence } from "txtgen";
 // import { getCourse } from './services/Course'
 function App() {
@@ -39,6 +41,16 @@ function App() {
           <Route
             path="/game"
             element={<Playground layout="tetris"></Playground>}
+          ></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
+          <Route
+            path="/test"
+            element={
+              <div className="playground">
+                <Modal message="Coming Soon"></Modal>
+              </div>
+            }
           ></Route>
           <Route path="*" element={<div className="playground"></div>}></Route>
         </Routes>

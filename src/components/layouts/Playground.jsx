@@ -21,11 +21,16 @@ const Playground = ({ layout, pattern }) => {
       setLessonTitle(message);
       if (task === "learn") {
         // setLesson("Hello".split(""));
-        setDirection({ prev: `/course/lesson/${id}`, next: "./../practice" });
+        setDirection({
+          prev: `/course/lesson/${id}`,
+          repeat: 0,
+          next: "./../practice",
+        });
         setLesson(createLesson(course[task], 5).split(""));
       } else if (task === "practice") {
         setDirection({
           prev: `/course/lesson/${id}`,
+          repeat: 0,
           next: `/course/lesson/${1 + Number(id)}`,
         });
 
