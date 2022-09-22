@@ -38,7 +38,7 @@ body {
 #navbar::before {
   content: "";
   position: absolute;
-  width: 38em;
+  width: 39em;
   height: 4.32em;
   top: -1em;
   left: -1.2em;
