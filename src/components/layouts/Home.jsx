@@ -6,7 +6,7 @@ const Home = () => {
     <div className="playground flex-center">
       <h1 className="" style={{ color: "burlywood" }}>
         Hello there, <br />
-        <br /> Lets start your journey to excel typing skills
+        <br /> Lets start journey to excel your typing skills
       </h1>
       <div className="">
         <Link className="btn" to="/course">
