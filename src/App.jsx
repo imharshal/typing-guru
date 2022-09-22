@@ -16,6 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <div id="App">
+        <Navbar />
         <Routes>
           <Route
             path="/course/lesson/:id/:task"
@@ -54,8 +55,6 @@ function App() {
           ></Route>
           <Route path="*" element={<div className="playground"></div>}></Route>
         </Routes>
-
-        <Navbar />
       </div>
     </BrowserRouter>
   );

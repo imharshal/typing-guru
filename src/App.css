@@ -1,4 +1,5 @@
 :root {
+  font-size: 15px;
   /* --size: 2em; */
   --keyboard-font-size: 17px;
   --input-box-font-size: 20px;
@@ -7,7 +8,7 @@
 }
 
 body {
-  background-color: white;
+  background-color: whitesmoke;
   color: black;
   display: flex;
   justify-content: center;
@@ -19,58 +20,92 @@ body {
 }
 
 #App {
-  display: grid;
-  grid-template-columns: 5fr 1fr;
+  /* display: grid; */
+  /* grid-template-columns: 5fr 1fr; */
+  display: flex;
   align-items: center;
-  /* flex-direction: row; */
+  flex-direction: column;
 }
 
 #navbar {
-  background-color: whitesmoke;
-  border-radius: 10px;
-  margin: 20px;
-  width: 200px;
-  height: 90vh;
+  border-bottom: none;
+  margin: 0;
+  width: max-content;
+  z-index: 2;
+  position: relative;
+}
+
+#navbar::before {
+  content: "";
+  position: absolute;
+  width: 38em;
+  height: 4.32em;
+  top: -1em;
+  left: -1.2em;
+  z-index: -2;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-transform: perspective(50em) rotateX(-30deg);
+  transform: perspective(50em) rotateX(50deg);
+  background-color: #A883BA;
 }
 
 #navbar ul {
+  transition: all 1s;
   margin: 0;
-  padding: 10px;
   display: flex;
-  flex-direction: column;
   list-style: none;
+  padding: 0;
 }
 
 #navbar ul li {
-  margin: 10px;
-  /* padding: 0; */
+  box-sizing: border-box;
+  margin: 0;
+  z-index: 3;
 }
 
 #navbar ul li>a {
+  box-sizing: border-box;
   display: block;
   text-decoration: none;
-  color: #A883BA;
-  font-size: 1.1em;
+  border-right: 1px solid white;
+  color: white;
+  margin: 0;
+  font-size: 1em;
   padding: 10px;
-  border-radius: 2px;
+  border-radius: 5px;
+}
+
+/* #navbar ul li>a::after {
+    content: "";
+    height: 5px;
+    border-right: 2px solid black;
+  } */
+
+#navbar ul li:last-child>a {
+  border-right: none;
 }
 
 #navbar ul li>a.active {
-  background-color: #A883BA;
-  box-shadow: 0 0 3px 0 black;
-  color: white;
+  box-sizing: border-box;
+  /* background-color: #A883BA; */
+  background-color: #FEFEDF;
+  box-shadow: 0 0 3px 0 #FEFEDF;
+  /* color: white; */
+  color: #A883BA;
+  border-radius: 5px;
+  margin: 0 5px;
 }
 
 .playground {
-  transition: all 3s;
   background-color: #FEFEDF;
   position: relative;
   border: 3px solid #A883BA;
   box-shadow: 0 0 5px 0 #A883BA;
   border-radius: 50px;
   padding: 30px;
-  margin: 10px auto;
-  width: 70vw;
+  margin: 0 auto;
+  width: 70em;
   height: 80vh
 }
 
