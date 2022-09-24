@@ -1,22 +1,50 @@
 :root {
   font-size: 15px;
   /* --size: 2em; */
-  --keyboard-font-size: 17px;
+  --keyboard-font-size: 16px;
   --input-box-font-size: 20px;
   --tetris-box-width: 300px;
   --tetris-box-height: 250px;
 }
 
+#mobile {
+  display: none;
+}
+
 body {
+  margin: 0;
   background-color: whitesmoke;
   color: black;
   display: flex;
   justify-content: center;
+  place-items: center;
   font-family: 'Montserrat', sans-serif;
+  /* min-width: 320px; */
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.7em;
+  line-height: 1.1;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
 }
 
 .text-center {
   text-align: center;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
 }
 
 #App {
@@ -25,6 +53,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 #navbar {
@@ -38,9 +67,10 @@ body {
 #navbar::before {
   content: "";
   position: absolute;
-  width: 39em;
-  height: 4.32em;
-  top: -1em;
+  /* width: 39em; */
+  width: 105%;
+  height: 4.7em;
+  top: -1.2em;
   left: -1.2em;
   z-index: -2;
   border-top-left-radius: 10px;
@@ -48,6 +78,7 @@ body {
   -webkit-transform: perspective(50em) rotateX(-30deg);
   transform: perspective(50em) rotateX(50deg);
   background-color: #A883BA;
+  box-shadow: 0 0 10px 0 #A883BA;
 }
 
 #navbar ul {
@@ -88,10 +119,8 @@ body {
 
 #navbar ul li>a.active {
   box-sizing: border-box;
-  /* background-color: #A883BA; */
   background-color: #FEFEDF;
   box-shadow: 0 0 3px 0 #FEFEDF;
-  /* color: white; */
   color: #A883BA;
   border-radius: 5px;
   margin: 0 5px;
@@ -100,13 +129,16 @@ body {
 .playground {
   background-color: #FEFEDF;
   position: relative;
-  border: 3px solid #A883BA;
+  border: 5px solid #A883BA;
   box-shadow: 0 0 5px 0 #A883BA;
   border-radius: 50px;
   padding: 30px;
-  margin: 0 auto;
+  margin: 0 10px;
+  /* margin: 0 auto; */
   width: 70em;
-  height: 80vh
+  min-height: 40em;
+  /* height: 80vh */
+  transition: .3s;
 }
 
 .space-between {
@@ -165,6 +197,7 @@ body {
   border-radius: 20px;
   color: #A883BA;
   border: 1px solid #A883BA;
+  background-color: white;
 }
 
 .lesson-item:hover {
@@ -227,6 +260,7 @@ body {
   background-color: transparent;
   /* width: 400px; */
   font-size: var(--keyboard-font-size);
+  transition: .3s;
 }
 
 .absolute-center {
@@ -574,4 +608,69 @@ body {
 .btn:hover {
   background-color: #9772A9;
   color: white
+}
+
+
+@media only screen and (max-width: 768px) {
+  #App {
+    display: none !important;
+  }
+
+  #mobile {
+    background-color: #FEFEDF;
+    padding: 20px;
+    margin: 10px;
+    border: 2px solid wheat;
+    display: block !important;
+    text-align: center;
+    color: #A883BA;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .playground {
+    max-width: 48em;
+    --keyboard-font-size: 10px;
+    --input-box-font-size: 17px
+  }
+
+  .hand-box {
+    transform: translateY(-15px) scale(.8);
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .playground {
+    max-width: 50em;
+    --keyboard-font-size: 11px;
+    --input-box-font-size: 17px
+  }
+
+  .hand-box {
+    transform: translateY(-15px) scale(.8);
+  }
+}
+
+@media only screen and (min-width: 980px) {
+  .playground {
+    max-width: 60em;
+    --keyboard-font-size: 13px
+  }
+
+  .hand-box {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .playground {
+    max-width: 80em;
+    --keyboard-font-size: 16px
+  }
+
+
+  .hand-box {
+    transform: translateY(0) scale(1);
+  }
 }

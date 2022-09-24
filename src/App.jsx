@@ -56,6 +56,14 @@ function App() {
           <Route path="*" element={<div className="playground"></div>}></Route>
         </Routes>
       </div>
+      <div id="mobile">
+        <h2>
+          Hello there, Glad to know you want to improve your typing skill.
+        </h2>
+        <br />
+        This app is intentionally designed to be used on desktop or laptop and
+        you might need to switch.
+      </div>
     </BrowserRouter>
   );
 }
