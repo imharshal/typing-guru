@@ -61,8 +61,9 @@ function App() {
           Hello there, Glad to know you want to improve your typing skill.
         </h2>
         <br />
-        This app is intentionally designed to be used on desktop or laptop and
-        you might need to switch.
+        This app is intentionally designed to be used on desktop or laptop.
+        <br /> <br />
+        <h5>Please swich to larger screen, you will ❤ it!</h5>
       </div>
     </BrowserRouter>
   );
