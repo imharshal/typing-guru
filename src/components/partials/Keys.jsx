@@ -65,31 +65,45 @@ function addShiftKeyHintClass(info, hint, keyPressed) {
     return "hint-key";
   return "";
 }
-const Key = ({ info, keyPressed, hint }) => {
-  const { base, shift, finger } = info;
-  return (
-    <span
-      className={`key key-square ${finger} 
-        ${addActiveClass(base, keyPressed)} 
-        ${addHintKeyClass(info, hint, keyPressed)}`}
-    >
-      {base}
-    </span>
-  );
-};
 
-const KeyBroad = ({ info, keyPressed, hint }) => {
+const Key = React.memo(
+  ({ info, keyPressed, hint, isHint, wasPressed }) => {
+    console.log("from key component", keyPressed);
+    const { base, shift, finger } = info;
+    return (
+      <span
+        className={`key key-square ${finger} 
+        ${isHint ? "hint-key" : ""} 
+       
+       `}
+      >
+        {base}
+      </span>
+    );
+  },
+  (prevProp, nextProp) => {
+    if (
+      prevProp.info.base === nextProp.isHint ||
+      prevProp.wasPressed === nextProp.wasPressed
+    )
+      return true;
+  }
+);
+
+const KeyBroad = React.memo(({ info, keyPressed, hint }) => {
   const { base, shift, finger, type } = info;
   return (
     <span
-      className={`key key-broad ${base.length < 2 ? 'backslash-key' : 'key-special'} ${finger} ${addActiveClass(base, keyPressed)}`}
+      className={`key key-broad ${
+        base.length < 2 ? "backslash-key" : "key-special"
+      } ${finger} ${addActiveClass(base, keyPressed)}`}
     >
       {base}
     </span>
   );
-};
+});
 
-const KeyBroader = ({ info, keyPressed, hint }) => {
+const KeyBroader = React.memo(({ info, keyPressed, hint }) => {
   const { base, shift, finger, special } = info;
   return (
     <span
@@ -99,9 +113,9 @@ const KeyBroader = ({ info, keyPressed, hint }) => {
       {base}
     </span>
   );
-};
+});
 
-const KeyBroadest = ({ info, keyPressed, hint }) => {
+const KeyBroadest = React.memo(({ info, keyPressed, hint }) => {
   const ref = useRef(null);
 
   const { base, shift, finger, special } = info;
@@ -116,9 +130,9 @@ const KeyBroadest = ({ info, keyPressed, hint }) => {
       {base}
     </span>
   );
-};
+});
 
-const KeySpaceBar = ({ info, keyPressed, hint }) => {
+const KeySpaceBar = React.memo(({ info, keyPressed, hint }) => {
   const { base, shift, finger } = info;
   return (
     <span
@@ -128,6 +142,6 @@ const KeySpaceBar = ({ info, keyPressed, hint }) => {
       Spacebar
     </span>
   );
-};
+});
 
 export { Key, KeyBroad, KeyBroader, KeyBroadest, KeySpaceBar };

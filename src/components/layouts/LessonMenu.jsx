@@ -100,8 +100,11 @@ const LessonMenu = () => {
           </Link>
         )}
         {course && course.practice && (
-          <Link to={`/course/lesson/${id}/practice`} className="lesson-item">
-            <h1 className="menu-item-title">Practice words</h1>
+          <Link
+            to={`/course/lesson/${id}/practice`}
+            className="lesson-item flex-center"
+          >
+            <h1 className="menu-item-title">Practice Words</h1>
           </Link>
         )}
       </div>

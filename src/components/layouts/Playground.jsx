@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ParagraphPractice from "./ParagraphPractice";
 import SentencePractice from "./SentencePractice";
 import { paragraph } from "txtgen";
@@ -90,4 +90,4 @@ const Playground = ({ layout, pattern }) => {
   else return "";
 };
 
-export default Playground;
+export default React.memo(Playground);
