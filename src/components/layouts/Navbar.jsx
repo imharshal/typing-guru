@@ -34,11 +34,11 @@ const Navbar = () => {
             Game
           </NavLink>
         </li>
-        <li>
-          <NavLink exact="true" className="nav-link" to="/logout">
-            Logout
-          </NavLink>
-        </li>
+//         <li>
+//           <NavLink exact="true" className="nav-link" to="/logout">
+//             Logout
+//           </NavLink>
+//         </li>
       </ul>
     </nav>
   );
