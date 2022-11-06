@@ -58,7 +58,7 @@ function App() {
       </div>
       <div id="mobile">
         <h2>
-          Hello there, Glad to know you want to improve your typing skill.
+          Hello there, Glad to know you want to improve your typing skills.
         </h2>
         <br />
         This app is intentionally designed to be used on desktop or laptop.
